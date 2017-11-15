@@ -14,12 +14,20 @@ android {
                 cppFlags ""
             }
         }
+        resConfigs "zh"
     }
     buildTypes {
         release {
             minifyEnabled true
             zipAlignEnabled true
+            shrinkResources true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            debuggable true
         }
     }
     externalNativeBuild {

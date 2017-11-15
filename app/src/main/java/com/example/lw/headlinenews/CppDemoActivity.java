@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.lw.commonUtils.FileUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class CppDemoActivity extends AppCompatActivity {
 
     // Used to load the 'native-lib' library on application startup.
     static {

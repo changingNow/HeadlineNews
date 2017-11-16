@@ -1,4 +1,4 @@
 # HeadlineNews
-This is for practice, do not for busness!
+This is for practice, do not for business!
 
 Practice

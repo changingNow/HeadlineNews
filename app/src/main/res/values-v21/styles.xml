@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LWToolbar.Popup" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:overlapAnchor">false</item>
+        <!--弹出框下拉列表 分割线-->
+        <item name="android:dropDownListViewStyle">@style/AppDropDownListViewStyle</item>
+    </style>
+</resources>

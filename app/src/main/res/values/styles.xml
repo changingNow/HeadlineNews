@@ -1,11 +1,55 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar"/>
+
+    <style name="LWOverflowMenuStyle" parent="Base.Widget.AppCompat.Light.PopupMenu.Overflow">
+        <!--锚点-->
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownHorizontalOffset">-1dp</item>
+        <item name="android:dropDownVerticalOffset">3dp</item>
+    </style>
+
+    <style name="base_toolbar">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <!--整个toolbar的背景,包括toolbar的标题,菜单部分的背景-->
+        <item name="android:background">@color/colorAccent</item>
+        <!--设置沉浸式-->
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="LWToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+        <!--指toolbar 上所有的标题,按钮,菜单的背景.  中间没有菜单的位置的背景不受其控制
+        为统一,一般只许设置base_toolbar的背景即可-->
+        <!--<item name="android:background">@android:color/white</item>-->
+        <item name="android:textSize">18sp</item>
+        <!--大标题颜色-->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--小标题颜色-->
+        <item name="subtitleTextColor">@android:color/white</item>
+        <!--三个点的颜色, 如果不需要可以为@null-->
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+
+    <style name="LWToolbar.Popup" parent="@style/ThemeOverlay.AppCompat.Light">
+        <!--弹出框下拉列表 分割线-->
+        <item name="android:dropDownListViewStyle">@style/AppDropDownListViewStyle</item>
+    </style>
+
+
+    <style name="AppDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
+        <item name="android:showDividers">middle</item>
+        <item name="android:dividerHeight">2dp</item>
+    </style>
 </resources>

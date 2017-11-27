@@ -7,4 +7,9 @@
     <string name="title_pic">图片</string>
     <string name="title_video">视频</string>
     <string name="title_media">头条号</string>
+    <string name="menu">菜单</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="about">关于</string>
+    <string name="exit">退出</string>
 </resources>

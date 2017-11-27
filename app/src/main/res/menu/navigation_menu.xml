@@ -4,14 +4,25 @@
         <item
             android:id="@+id/nav_switch_night_mode"
             android:icon="@drawable/ic_mode"
-            android:title="@string/nav_switch_night_mode"/>
+            android:title="@string/nav_switch_night_mode" />
         <item
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_setting"
-            android:title="@string/nav_setting"/>
+            android:title="@string/nav_setting" />
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_share"
-            android:title="@string/nav_share"/>
+            android:title="@string/nav_share" />
+    </group>
+
+    <group>
+        <item
+            android:id="@+id/about"
+            android:icon="@mipmap/ic_about"
+            android:title="@string/about" />
+        <item
+            android:id="@+id/exit"
+            android:icon="@mipmap/ic_exit"
+            android:title="@string/exit" />
     </group>
 </menu>

@@ -35,6 +35,7 @@ public class BaseActivity extends RxAppCompatActivity {
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(homeAsUpEnabled);
+        getSupportActionBar().setHomeButtonEnabled(homeAsUpEnabled);
     }
 
     @Override

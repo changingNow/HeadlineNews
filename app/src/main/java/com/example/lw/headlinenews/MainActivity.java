@@ -44,21 +44,18 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_switch_night_mode:
-                drawer.closeDrawers();
                 break;
             case R.id.nav_setting:
-                drawer.closeDrawers();
                 break;
             case R.id.nav_share:
-                drawer.closeDrawers();
                 break;
             case R.id.nav_about:
-                drawer.closeDrawers();
                 break;
             case R.id.nav_exit:
                 onBackPressed();
                 break;
         }
+        drawer.closeDrawers();
         return false;
     }
 

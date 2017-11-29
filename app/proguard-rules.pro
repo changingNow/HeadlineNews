@@ -122,3 +122,7 @@
 -keepclassmembers class **.R$* {
       public static <fields>;
 }
+
+#dbflow 混淆
+-dontwarn com.raizlabs.android.dbflow.**
+-keep class com.raizlabs.android.dbflow.** { *;}

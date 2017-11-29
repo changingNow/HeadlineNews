@@ -22,6 +22,7 @@ android {
             zipAlignEnabled true
             shrinkResources true
             debuggable false
+            multiDexKeepFile file('dex.keep')
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
@@ -55,6 +56,7 @@ configurations.all {
     }
 }
 
+def dbflow_version = "4.1.2"
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compile project(path: ':libraries:common-utils')
@@ -80,4 +82,11 @@ dependencies {
     //design
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:multidex:1.0.2'
+    //dbflow
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+    // sql-cipher database encyrption (optional)
+    implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}"
 }

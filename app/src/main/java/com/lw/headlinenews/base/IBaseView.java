@@ -1,4 +1,4 @@
-package com.example.lw.headlinenews.base;
+package com.lw.headlinenews.base;
 
 import com.trello.rxlifecycle2.LifecycleTransformer;
 

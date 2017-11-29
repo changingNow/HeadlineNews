@@ -1,4 +1,4 @@
-package com.example.lw.headlinenews;
+package com.lw.headlinenews;
 
 import android.app.Application;
 import android.content.Context;

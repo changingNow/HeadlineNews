@@ -1,4 +1,4 @@
-package com.example.lw.headlinenews.base;
+package com.lw.headlinenews.base;
 
 /**
  * Created by lw on 17-11-16.

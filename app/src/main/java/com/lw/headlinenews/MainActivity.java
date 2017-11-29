@@ -1,4 +1,4 @@
-package com.example.lw.headlinenews;
+package com.lw.headlinenews;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
 
-import com.example.lw.headlinenews.base.BaseActivity;
+import com.lw.headlinenews.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, RadioGroup.OnCheckedChangeListener {
 

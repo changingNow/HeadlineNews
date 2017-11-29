@@ -1,4 +1,4 @@
-package com.example.lw.headlinenews.module.news;
+package com.lw.headlinenews.module.news;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.lw.headlinenews.R;
-import com.example.lw.headlinenews.dbmodel.NewsTabItems;
-import com.example.lw.headlinenews.helper.TabItemsHelper;
+import com.lw.headlinenews.R;
+import com.lw.headlinenews.dbmodel.NewsTabItems;
+import com.lw.headlinenews.helper.TabItemsHelper;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.lw.headlinenews;
+package com.lw.headlinenews;
 
 import org.junit.Test;
 

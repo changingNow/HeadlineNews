@@ -1,12 +1,12 @@
-package com.example.lw.headlinenews.helper;
+package com.lw.headlinenews.helper;
 
 
 import android.content.Context;
 
-import com.example.lw.headlinenews.HNApplication;
-import com.example.lw.headlinenews.R;
-import com.example.lw.headlinenews.dbmodel.NewsTabItems;
-import com.example.lw.headlinenews.dbmodel.NewsTabItems_Table;
+import com.lw.headlinenews.HNApplication;
+import com.lw.headlinenews.R;
+import com.lw.headlinenews.dbmodel.NewsTabItems;
+import com.lw.headlinenews.dbmodel.NewsTabItems_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;

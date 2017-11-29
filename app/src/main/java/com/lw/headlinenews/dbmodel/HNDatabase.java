@@ -1,4 +1,4 @@
-package com.example.lw.headlinenews.dbmodel;
+package com.lw.headlinenews.dbmodel;
 
 import com.raizlabs.android.dbflow.annotation.Database;
 

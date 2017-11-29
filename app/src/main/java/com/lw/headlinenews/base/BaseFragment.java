@@ -1,4 +1,4 @@
-package com.example.lw.headlinenews.base;
+package com.lw.headlinenews.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.lw.headlinenews.event.DoNoThingEvent;
+import com.lw.headlinenews.event.DoNoThingEvent;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.trello.rxlifecycle2.components.support.RxFragment;

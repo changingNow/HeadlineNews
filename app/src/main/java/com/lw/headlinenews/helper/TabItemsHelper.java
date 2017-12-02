@@ -36,5 +36,13 @@ public class TabItemsHelper {
             tabItems.isEnable = 1;
             tabItems.insert();
         }
+
+        for (int i = 8; i < newsId.length; i++) {
+            NewsTabItems tabItems = new NewsTabItems();
+            tabItems.tabItemName = newsName[i];
+            tabItems.tabItemId = newsId[i];
+            tabItems.isEnable = 0;
+            tabItems.insert();
+        }
     }
 }

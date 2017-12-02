@@ -1,8 +1,11 @@
 package com.lw.headlinenews;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -10,17 +13,46 @@ import android.view.MenuItem;
 import android.widget.RadioGroup;
 
 import com.lw.headlinenews.base.BaseActivity;
+import com.lw.headlinenews.module.news.NewsTabLayout;
+import com.lw.headlinenews.module.photo.PhotoTabLayout;
+import com.lw.headlinenews.module.video.VideoTabLayout;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup bottomMenu;
     private DrawerLayout drawer;
+    private NewsTabLayout newsTabLayout;
+    private VideoTabLayout videoTabLayout;
+    private PhotoTabLayout photoTabLayout;
+    private String POSITION = "position";
+    private String CURRENT_ID = "id";
+    private int position = 0;//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
+        setContentFragment(savedInstanceState);
+    }
+
+    private void setContentFragment(Bundle savedInstanceState) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (savedInstanceState != null) {
+            newsTabLayout = (NewsTabLayout)fragmentManager.findFragmentByTag(NewsTabLayout.class.toString());
+            videoTabLayout = (VideoTabLayout)fragmentManager.findFragmentByTag(VideoTabLayout.class.toString());
+            photoTabLayout = (PhotoTabLayout)fragmentManager.findFragmentByTag(PhotoTabLayout.class.toString());
+            int position = savedInstanceState.getInt(POSITION);
+            int id = savedInstanceState.getInt(CURRENT_ID);
+            switchFragment(position);
+            bottomMenu.check(id);
+        } else {
+
+        }
+    }
+
+    private void switchFragment(int position) {
+
     }
 
     private void initViews() {
@@ -71,5 +103,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case R.id.menu_media:
                 break;
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(POSITION, position);
+        outState.putInt(CURRENT_ID, bottomMenu.getCheckedRadioButtonId());
     }
 }

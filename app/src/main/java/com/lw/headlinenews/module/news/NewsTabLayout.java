@@ -5,16 +5,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lw.headlinenews.R;
-import com.lw.headlinenews.dbmodel.NewsTabItems;
-import com.lw.headlinenews.helper.TabItemsHelper;
-
-import java.util.List;
 
 
 /**
@@ -31,7 +26,6 @@ public class NewsTabLayout extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.news_tablayout, container, false);
         initView(view);
-        Log.d("tag", "============is here?");
         return view;
     }
 
@@ -39,8 +33,8 @@ public class NewsTabLayout extends Fragment {
         newsTab = view.findViewById(R.id.news_tab);
         newsViewPager = view.findViewById(R.id.news_viewpager);
         newsTab.setupWithViewPager(newsViewPager);
-        List<NewsTabItems> newsTabItems = TabItemsHelper.getNewsTabItems();
-        Log.d("tag", "==========="+newsTabItems.size());
+        newsTab.setTabMode(TabLayout.MODE_SCROLLABLE);
+
     }
 
 }

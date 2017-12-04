@@ -126,3 +126,15 @@
 #dbflow 混淆
 -dontwarn com.raizlabs.android.dbflow.**
 -keep class com.raizlabs.android.dbflow.** { *;}
+
+#gson 混淆
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn sun.misc.**
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+# Gson specific classes
+-keep class sun.misc.Unsafe { *; }
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.lw.headlinenews.bean.** { *; }

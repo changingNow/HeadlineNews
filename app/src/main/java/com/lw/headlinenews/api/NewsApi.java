@@ -1,6 +1,6 @@
 package com.lw.headlinenews.api;
 
-import com.lw.headlinenews.module.news.NewsArticleBean;
+import com.lw.headlinenews.bean.NewsArticleBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

@@ -93,4 +93,7 @@ dependencies {
     // sql-cipher database encyrption (optional)
     implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}"
+    //leak canary
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }

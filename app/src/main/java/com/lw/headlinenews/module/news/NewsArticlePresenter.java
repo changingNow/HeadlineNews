@@ -1,8 +1,10 @@
 package com.lw.headlinenews.module.news;
 
 import com.lw.commonUtils.LogUtils;
+import com.lw.commonUtils.RetrofitUtils;
+import com.lw.headlinenews.HNApplication;
 import com.lw.headlinenews.api.NewsApi;
-import com.lw.headlinenews.utils.RetrofitFactory;
+import com.lw.headlinenews.bean.NewsArticleBean;
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by lw on 17-12-2.
  */
 
-public class NewsArticlePresenter implements NewsContact.Presenter{
+public class NewsArticlePresenter implements NewsContact.Presenter {
 
     @Override
     public void doRefresh() {
@@ -28,8 +30,8 @@ public class NewsArticlePresenter implements NewsContact.Presenter{
 
     @Override
     public List<NewsArticleBean> getNewsArticleList() {
-        String time = String.valueOf(System.currentTimeMillis()/1000);
-        RetrofitFactory.getRetrofit(NewsApi.HOST)
+        String time = String.valueOf(System.currentTimeMillis() / 1000);
+        RetrofitUtils.getInstance().getRetrofit(HNApplication.getAppContext(), NewsApi.HOST)
                 .create(NewsApi.class)
                 .getNews("news_society", time)
                 .subscribeOn(Schedulers.io())

@@ -1,4 +1,4 @@
-package com.lw.headlinenews.module.news;
+package com.lw.headlinenews.bean;
 
 import java.util.List;
 

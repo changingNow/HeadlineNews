@@ -2,6 +2,7 @@ package com.lw.headlinenews.module.news;
 
 import com.lw.headlinenews.base.IBasePresenter;
 import com.lw.headlinenews.base.IBaseView;
+import com.lw.headlinenews.bean.NewsArticleBean;
 
 import java.util.List;
 

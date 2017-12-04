@@ -31,11 +31,14 @@ public class ApplicationUnitTest extends ActivityInstrumentationTestCase2<TestAc
 
     public void testGetNewsArticle() throws InterruptedException {
         String time = String.valueOf(System.currentTimeMillis() / 1000);
+        String[] idArray = getActivity().getResources().getStringArray(R.array.news_id);
+        int index = TestUtils.randInt(0, idArray.length - 1);
+        LogUtils.d(TAG, idArray[index]);
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         RetrofitUtils.getInstance()
                 .getRetrofit(HNApplication.getAppContext(), NewsApi.HOST)
                 .create(NewsApi.class)
-                .getNews("news_society", time)
+                .getNews(idArray[index], time)
                 .observeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<NewsArticleBean>() {

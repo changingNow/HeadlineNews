@@ -36,7 +36,6 @@ public class VideoTabLayout extends Fragment {
         videoViewPager = view.findViewById(R.id.video_viewpager);
         videoTab.setupWithViewPager(videoViewPager);
         videoTab.setTabMode(TabLayout.MODE_SCROLLABLE);
-        List<NewsTabItems> newsTabItems = TabItemsHelper.getNewsTabItems();
     }
 
 }

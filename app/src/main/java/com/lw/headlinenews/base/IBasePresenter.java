@@ -3,15 +3,19 @@ package com.lw.headlinenews.base;
 /**
  * Created by lw on 17-11-16.
  */
-public interface IBasePresenter {
+public abstract class IBasePresenter<V extends IBaseView> {
 
-    /**
-     * 刷新数据
-     */
-    void doRefresh();
+    private V view;
 
-    /**
-     * 显示网络错误
-     */
-    void doShowNetError();
+    public void onAttach(V view) {
+        this.view = view;
+    }
+
+    public void onDetach() {
+        view = null;
+    }
+
+    public V getView() {
+        return view;
+    }
 }

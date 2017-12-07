@@ -96,4 +96,6 @@ dependencies {
     //leak canary
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    //XRecyclerView https://github.com/XRecyclerView/XRecyclerView
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.2'
 }

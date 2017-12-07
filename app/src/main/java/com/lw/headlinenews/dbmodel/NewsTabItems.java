@@ -8,6 +8,8 @@ import com.raizlabs.android.dbflow.annotation.Table;
  */
 @Table(database = HNDatabase.class)
 public class NewsTabItems extends BaseDbModel {
+    public static final int ENABLE = 1;
+
     @Column
     public String tabItemName;
 

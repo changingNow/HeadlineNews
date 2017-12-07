@@ -38,17 +38,17 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     private void setContentFragment(Bundle savedInstanceState) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if (savedInstanceState != null) {
-            newsTabLayout = (NewsTabLayout)fragmentManager.findFragmentByTag(NewsTabLayout.class.toString());
-            videoTabLayout = (VideoTabLayout)fragmentManager.findFragmentByTag(VideoTabLayout.class.toString());
-            photoTabLayout = (PhotoTabLayout)fragmentManager.findFragmentByTag(PhotoTabLayout.class.toString());
-            int position = savedInstanceState.getInt(POSITION);
-            int id = savedInstanceState.getInt(CURRENT_ID);
-            switchFragment(position);
-            bottomMenu.check(id);
-        } else {
-
-        }
+//        if (savedInstanceState != null) {
+//            newsTabLayout = (NewsTabLayout)fragmentManager.findFragmentByTag(NewsTabLayout.class.toString());
+//            videoTabLayout = (VideoTabLayout)fragmentManager.findFragmentByTag(VideoTabLayout.class.toString());
+//            photoTabLayout = (PhotoTabLayout)fragmentManager.findFragmentByTag(PhotoTabLayout.class.toString());
+//            int position = savedInstanceState.getInt(POSITION);
+//            int id = savedInstanceState.getInt(CURRENT_ID);
+//            switchFragment(position);
+//            bottomMenu.check(id);
+//        } else {
+            fragmentManager.beginTransaction().add(R.id.content_container, new NewsTabLayout()).commit();
+//        }
     }
 
     private void switchFragment(int position) {

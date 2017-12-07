@@ -19,9 +19,9 @@ import org.greenrobot.eventbus.Subscribe;
  * Created by lw on 17-11-16.
  */
 
-public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment implements IBaseView<T> {
+public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter<V>> extends RxFragment implements IBaseView {
 
-    protected T presenter;
+    protected P presenter;
 
     /**
      * 绑定布局文件
@@ -29,6 +29,12 @@ public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment 
      * @return 布局文件ID
      */
     protected abstract int attachLayoutId();
+
+    /**
+     * init presenter
+     * @return presenter
+     */
+    protected abstract P createPresenter();
 
     /**
      * 初始化视图控件
@@ -50,17 +56,27 @@ public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setPresenter(presenter);
-        EventBus.getDefault().register(this);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(attachLayoutId(), container, false);
+        EventBus.getDefault().register(this);
+        setPresenter();
         initView(view);
         initData();
         return view;
+    }
+
+    private void setPresenter() {
+        if (presenter == null) {
+            presenter = createPresenter();
+        }
+        if (presenter == null) {
+            throw new NullPointerException("presenter must be set before!");
+        }
+        presenter.onAttach((V)this);
     }
 
     /**
@@ -74,9 +90,13 @@ public abstract class BaseFragment<T extends IBasePresenter> extends RxFragment 
     @Override
     public void onStop() {
         super.onStop();
+        if (presenter != null) {
+            presenter.onDetach();
+        }
         EventBus.getDefault().unregister(this);
     }
 
     @Subscribe
-    public void registEventBusOnly(DoNoThingEvent event) {}
+    public void registEventBusOnly(DoNoThingEvent event) {
+    }
 }

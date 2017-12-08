@@ -3,7 +3,9 @@ package com.lw.headlinenews.module.news.article;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import com.lw.commonUtils.CollectionUtils;
 import com.lw.commonUtils.LogUtils;
+import com.lw.headlinenews.adapter.NewsArticleAdapter;
 import com.lw.headlinenews.base.BaseListFragment;
 import com.lw.headlinenews.bean.NewsArticleDataBean;
 
@@ -42,7 +44,12 @@ public class NewsArticleListFragment extends BaseListFragment<NewsContact.View, 
 
     @Override
     public void onLoadData(List<NewsArticleDataBean> list) {
-        LogUtils.d(TAG, "============" + list.get(0).getDescription());
+        if (!CollectionUtils.isNullOrEmpty(list)) {
+            LogUtils.d(TAG, "============" + list.get(0).getDescription());
+            NewsArticleAdapter adapter = new NewsArticleAdapter(list);
+            recycleView.setAdapter(adapter);
+        }
+
     }
 
 

@@ -1,5 +1,9 @@
 package com.lw.headlinenews.bean;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.databinding.Observable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -8,7 +12,7 @@ import java.util.List;
  * Created by lw on 17-12-2.
  */
 
-public class NewsArticleDataBean {
+public class NewsArticleDataBean extends BaseObservable {
 
     /**
      * abstract : 侯勇是一个不善言谈的人，他心地善良，乐于助人，他周围的邻居都很喜欢他。也是因为他的善良，加上他不善言谈，他总是常常被人误会，但他对这些误会总是不愿做过多的解释。用他自己的话说就是理解你的人你不需要向他们解释，那些不理解你的人你解释了也没用。
@@ -238,6 +242,7 @@ public class NewsArticleDataBean {
         return description;
     }
 
+    @Bindable
     public void setDescription(String description) {
         this.description = description;
     }
@@ -246,6 +251,7 @@ public class NewsArticleDataBean {
         return actionExtra;
     }
 
+    @Bindable
     public void setActionExtra(String actionExtra) {
         this.actionExtra = actionExtra;
     }
@@ -274,6 +280,7 @@ public class NewsArticleDataBean {
         this.articleSubType = articleSubType;
     }
 
+    @Bindable
     public int getArticleType() {
         return articleType;
     }
@@ -282,6 +289,7 @@ public class NewsArticleDataBean {
         this.articleType = articleType;
     }
 
+    @Bindable
     public String getArticleUrl() {
         return articleUrl;
     }
@@ -338,6 +346,7 @@ public class NewsArticleDataBean {
         this.cellType = cellType;
     }
 
+    @Bindable
     public int getCommentCount() {
         return commentCount;
     }
@@ -354,6 +363,7 @@ public class NewsArticleDataBean {
         this.cursor = cursor;
     }
 
+    @Bindable
     public int getDiggCount() {
         return diggCount;
     }
@@ -362,6 +372,7 @@ public class NewsArticleDataBean {
         this.diggCount = diggCount;
     }
 
+    @Bindable
     public String getDisplayUrl() {
         return displayUrl;
     }
@@ -378,6 +389,7 @@ public class NewsArticleDataBean {
         this.forwardInfo = forwardInfo;
     }
 
+    @Bindable
     public int getGallaryImageCount() {
         return gallaryImageCount;
     }
@@ -418,6 +430,7 @@ public class NewsArticleDataBean {
         this.hasMp4Video = hasMp4Video;
     }
 
+    @Bindable
     public boolean isHasVideo() {
         return hasVideo;
     }
@@ -426,6 +439,7 @@ public class NewsArticleDataBean {
         this.hasVideo = hasVideo;
     }
 
+    @Bindable
     public int getHot() {
         return hot;
     }
@@ -450,6 +464,7 @@ public class NewsArticleDataBean {
         isSubject = subject;
     }
 
+    @Bindable
     public long getItemId() {
         return itemId;
     }
@@ -498,6 +513,7 @@ public class NewsArticleDataBean {
         this.mediaInfo = mediaInfo;
     }
 
+    @Bindable
     public String getMediaName() {
         return mediaName;
     }
@@ -506,6 +522,7 @@ public class NewsArticleDataBean {
         this.mediaName = mediaName;
     }
 
+    @Bindable
     public MiddleImageBean getMiddleImage() {
         return middleImage;
     }
@@ -522,6 +539,7 @@ public class NewsArticleDataBean {
         this.publishTime = publishTime;
     }
 
+    @Bindable
     public int getReadCount() {
         return readCount;
     }
@@ -546,6 +564,7 @@ public class NewsArticleDataBean {
         this.rid = rid;
     }
 
+    @Bindable
     public int getShareCount() {
         return shareCount;
     }
@@ -554,6 +573,7 @@ public class NewsArticleDataBean {
         this.shareCount = shareCount;
     }
 
+    @Bindable
     public String getShareUrl() {
         return shareUrl;
     }
@@ -578,6 +598,7 @@ public class NewsArticleDataBean {
         this.showPortraitArticle = showPortraitArticle;
     }
 
+    @Bindable
     public String getSource() {
         return source;
     }
@@ -626,6 +647,7 @@ public class NewsArticleDataBean {
         this.tip = tip;
     }
 
+    @Bindable
     public String getTitle() {
         return title;
     }
@@ -642,6 +664,7 @@ public class NewsArticleDataBean {
         this.ugcRecommend = ugcRecommend;
     }
 
+    @Bindable
     public String getUrl() {
         return url;
     }
@@ -650,6 +673,7 @@ public class NewsArticleDataBean {
         this.url = url;
     }
 
+    @Bindable
     public UserInfoBean getUserInfo() {
         return userInfo;
     }
@@ -682,6 +706,7 @@ public class NewsArticleDataBean {
         this.verifiedContent = verifiedContent;
     }
 
+    @Bindable
     public int getVideoStyle() {
         return videoStyle;
     }
@@ -706,6 +731,7 @@ public class NewsArticleDataBean {
         this.filterWords = filterWords;
     }
 
+    @Bindable
     public List<ImageListBean> getImageList() {
         return imageList;
     }
@@ -747,7 +773,7 @@ public class NewsArticleDataBean {
         }
     }
 
-    public static class MediaInfoBean {
+    public static class MediaInfoBean extends BaseObservable {
         /**
          * avatar_url : http://p9.pstatp.com/large/432f0002893d425f0041
          * follow : false
@@ -821,6 +847,7 @@ public class NewsArticleDataBean {
             this.mediaId = mediaId;
         }
 
+        @Bindable
         public String getName() {
             return name;
         }
@@ -870,7 +897,7 @@ public class NewsArticleDataBean {
         }
     }
 
-    public static class MiddleImageBean {
+    public static class MiddleImageBean extends BaseObservable {
         /**
          * height : 720
          * uri : list/47260004665c59efb7ab
@@ -894,6 +921,7 @@ public class NewsArticleDataBean {
             this.height = height;
         }
 
+        @Bindable
         public String getUri() {
             return uri;
         }
@@ -918,6 +946,7 @@ public class NewsArticleDataBean {
             this.width = width;
         }
 
+        @Bindable
         public List<UrlListBean> getUrlList() {
             return urlList;
         }
@@ -926,13 +955,14 @@ public class NewsArticleDataBean {
             this.urlList = urlList;
         }
 
-        public static class UrlListBean {
+        public static class UrlListBean extends BaseObservable {
             /**
              * url : http://p1.pstatp.com/list/300x196/47260004665c59efb7ab.webp
              */
 
             private String url;
 
+            @Bindable
             public String getUrl() {
                 return url;
             }
@@ -969,7 +999,7 @@ public class NewsArticleDataBean {
         }
     }
 
-    public static class UserInfoBean {
+    public static class UserInfoBean extends BaseObservable {
         /**
          * avatar_url : http://p9.pstatp.com/thumb/432f0002893d425f0041
          * description : 每天分享一些功夫和动作电影。喜欢就关注哦。
@@ -994,6 +1024,7 @@ public class NewsArticleDataBean {
         @SerializedName("user_verified")
         private boolean userVerified;
 
+        @Bindable
         public String getAvatarUrl() {
             return avatarUrl;
         }
@@ -1026,6 +1057,7 @@ public class NewsArticleDataBean {
             this.followerCount = followerCount;
         }
 
+        @Bindable
         public String getName() {
             return name;
         }
@@ -1126,7 +1158,7 @@ public class NewsArticleDataBean {
         }
     }
 
-    public static class ImageListBean {
+    public static class ImageListBean extends BaseObservable {
         /**
          * height : 720
          * uri : list/47260004665c59efb7ab
@@ -1150,6 +1182,7 @@ public class NewsArticleDataBean {
             this.height = height;
         }
 
+        @Bindable
         public String getUri() {
             return uri;
         }
@@ -1158,6 +1191,7 @@ public class NewsArticleDataBean {
             this.uri = uri;
         }
 
+        @Bindable
         public String getUrl() {
             return url;
         }

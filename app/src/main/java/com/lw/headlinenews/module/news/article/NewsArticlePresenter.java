@@ -1,6 +1,5 @@
 package com.lw.headlinenews.module.news.article;
 
-import android.content.ClipData;
 
 import com.google.gson.Gson;
 import com.lw.commonUtils.RetrofitUtils;

@@ -1,13 +1,16 @@
 package com.lw.headlinenews.adapter;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lw.headlinenews.BR;
 import com.lw.headlinenews.R;
 import com.lw.headlinenews.bean.NewsArticleDataBean;
+import com.lw.headlinenews.databinding.NewsArticleItemLayoutBinding;
 import com.lw.headlinenews.viewHolder.BaseDataBindingViewHolder;
 
 import java.util.List;
@@ -33,11 +36,12 @@ public class NewsArticleAdapter extends RecyclerView.Adapter<BaseDataBindingView
     @Override
     public void onBindViewHolder(BaseDataBindingViewHolder holder, int position) {
         NewsArticleDataBean articleDataBean = list.get(position);
-
+        holder.view.setVariable(BR.dataBean, articleDataBean);
+        holder.view.executePendingBindings();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list == null ? 0 : list.size();
     }
 }

@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
  */
 
 public class BaseDataBindingViewHolder<T extends ViewDataBinding> extends RecyclerView.ViewHolder {
-    private T view;
+    public T view;
     public BaseDataBindingViewHolder(T view) {
         super(view.getRoot());
         this.view = view;

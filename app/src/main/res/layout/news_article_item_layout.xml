@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <import type="com.lw.headlinenews.bean.NewsArticleDataBean" />
+
+        <import type="android.view.View" />
 
         <variable
             name="dataBean"
@@ -12,8 +14,52 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/news_item_border_margin"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                bind:setImageByUrl="@{dataBean.userInfo.avatarUrl}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/news_item_border_margin"
+                android:text="@{dataBean.source}"
+                android:textSize="@dimen/news_item_little_title"
+                android:visibility="@{dataBean.source != null ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"-" + dataBean.commentCount + "评论-"}'
+                android:textSize="@dimen/news_item_little_title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/news_item_little_title"
+                bind:setIntToTextView="@{dataBean.behotTime}" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="test" />
+            </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </layout>

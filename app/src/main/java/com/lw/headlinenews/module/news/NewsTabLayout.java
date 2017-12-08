@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import java.util.List;
  */
 
 public class NewsTabLayout extends Fragment {
+    private static final String TAG = "NewsTabLayout";
 
     private TabLayout newsTab;
     private ViewPager newsViewPager;
@@ -53,16 +55,23 @@ public class NewsTabLayout extends Fragment {
         fragmentList = new ArrayList<>();
         for (NewsTabItems item : newsTabItems) {
             Fragment fragment = null;
-            switch (item.tabItemId){
-                case "question_and_answer":
-                    break;
-                case "":
-                case "essay_joke":
-                    break;
-                default:
-                    fragment = NewsArticleListFragment.getInstance(item.tabItemId);
+            String tabItemId = item.tabItemId;
+            if (tabItemId.equals("question_and_answer") || tabItemId.equals("video") || tabItemId.equals("essay_joke")) {
+                continue;
             }
-            titleList.add(item.tabItemName);
+//            switch (tabItemId){
+//                case "question_and_answer":
+//                    break;
+//                case "video":
+//                    break;
+//                case "essay_joke":
+//                    break;
+//                default:
+                    fragment = NewsArticleListFragment.getInstance(item.tabItemId);
+                    titleList.add(item.tabItemName);
+                    Log.d(TAG, "============"+item.tabItemName+"/"+item.tabItemId);
+//                    break;
+//            }
             fragmentList.add(fragment);
         }
     }

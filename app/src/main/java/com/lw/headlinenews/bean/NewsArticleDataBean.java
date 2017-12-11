@@ -43,7 +43,30 @@ public class NewsArticleDataBean extends BaseObservable {
      * has_video : false
      * hot : 0
      * ignore_web_transform : 1
-     * image_list : [{"height":720,"uri":"list/47260004665c59efb7ab","url":"http://p1.pstatp.com/list/300x196/47260004665c59efb7ab.webp","url_list":[{"url":"http://p1.pstatp.com/list/300x196/47260004665c59efb7ab.webp"},{"url":"http://pb3.pstatp.com/list/300x196/47260004665c59efb7ab.webp"},{"url":"http://pb9.pstatp.com/list/300x196/47260004665c59efb7ab.webp"}],"width":1280},{"height":720,"uri":"list/472a0002cb8d714df989","url":"http://p3.pstatp.com/list/300x196/472a0002cb8d714df989.webp","url_list":[{"url":"http://p3.pstatp.com/list/300x196/472a0002cb8d714df989.webp"},{"url":"http://pb9.pstatp.com/list/300x196/472a0002cb8d714df989.webp"},{"url":"http://pb1.pstatp.com/list/300x196/472a0002cb8d714df989.webp"}],"width":1280},{"height":720,"uri":"list/47260004679cd59c8671","url":"http://p3.pstatp.com/list/300x196/47260004679cd59c8671.webp","url_list":[{"url":"http://p3.pstatp.com/list/300x196/47260004679cd59c8671.webp"},{"url":"http://pb9.pstatp.com/list/300x196/47260004679cd59c8671.webp"},{"url":"http://pb1.pstatp.com/list/300x196/47260004679cd59c8671.webp"}],"width":1280}]
+     * image_list : [{"height":720,"uri":"list/47260004665c59efb7ab",
+     * "url":"http://p1.pstatp.com/list/300x196/47260004665c59efb7ab.webp",
+     * "url_list":[
+     * {"url":"http://p1.pstatp.com/list/300x196/47260004665c59efb7ab.webp"},
+     * {"url":"http://pb3.pstatp.com/list/300x196/47260004665c59efb7ab.webp"},
+     * {"url":"http://pb9.pstatp.com/list/300x196/47260004665c59efb7ab.webp"}],
+     *
+     * "width":1280},
+     *
+     * {"height":720,"uri":"list/472a0002cb8d714df989",
+     * "url":"http://p3.pstatp.com/list/300x196/472a0002cb8d714df989.webp",
+     * "url_list":[{"url":"http://p3.pstatp.com/list/300x196/472a0002cb8d714df989.webp"},
+     * {"url":"http://pb9.pstatp.com/list/300x196/472a0002cb8d714df989.webp"},
+     * {"url":"http://pb1.pstatp.com/list/300x196/472a0002cb8d714df989.webp"}],
+     *
+     * "width":1280},
+     *
+     * {"height":720,"uri":"list/47260004679cd59c8671",
+     * "url":"http://p3.pstatp.com/list/300x196/47260004679cd59c8671.webp",
+         * "url_list":[{"url":"http://p3.pstatp.com/list/300x196/47260004679cd59c8671.webp"},
+     * {"url":"http://pb9.pstatp.com/list/300x196/47260004679cd59c8671.webp"},
+     * {"url":"http://pb1.pstatp.com/list/300x196/47260004679cd59c8671.webp"}],"width":1280}]
+     *
+     *
      * is_subject : false
      * item_id : 6494789423077523982
      * item_version : 0
@@ -228,6 +251,12 @@ public class NewsArticleDataBean extends BaseObservable {
 
     @SerializedName("video_style")
     private int videoStyle;
+
+    @SerializedName("video_detail_info")
+    private VideoDetailInfoBean videoDetailInfo;
+
+    @SerializedName("video_duration")
+    private int videoDuration;
 
     @SerializedName("action_list")
     private List<ActionListBean> actionList;
@@ -715,6 +744,24 @@ public class NewsArticleDataBean extends BaseObservable {
         this.videoStyle = videoStyle;
     }
 
+    @Bindable
+    public VideoDetailInfoBean getVideoDetailInfo() {
+        return videoDetailInfo;
+    }
+
+    public void setVideoDetailInfo(VideoDetailInfoBean videoDetailInfo) {
+        this.videoDetailInfo = videoDetailInfo;
+    }
+
+    @Bindable
+    public int getVideoDuration() {
+        return videoDuration;
+    }
+
+    public void setVideoDuration(int videoDuration) {
+        this.videoDuration = videoDuration;
+    }
+
     public List<ActionListBean> getActionList() {
         return actionList;
     }
@@ -1080,6 +1127,178 @@ public class NewsArticleDataBean extends BaseObservable {
 
         public void setUserVerified(boolean userVerified) {
             this.userVerified = userVerified;
+        }
+    }
+
+
+    public static class VideoDetailInfoBean extends BaseObservable {
+        /**
+         * detail_video_large_image : {"height":326,"uri":"video1609/4c3d0011ce0957150d2e","url":"http: //p3.pstatp.com/video1609/4c3d0011ce0957150d2e","url_list":[{"url":"http: //p3.pstatp.com/video1609/4c3d0011ce0957150d2e"},{"url":"http: //pb9.pstatp.com/video1609/4c3d0011ce0957150d2e"},{"url":"http: //pb1.pstatp.com/video1609/4c3d0011ce0957150d2e"}],"width":580}
+         * direct_play : 1
+         * group_flags : 32832
+         * show_pgc_subscribe : 1
+         * video_id : 44325dd89fd64d258098327b03e6305e
+         * video_preloading_flag : 1
+         * video_type : 0
+         * video_watch_count : 26
+         * video_watching_count : 0
+         */
+        @SerializedName("detail_video_large_image")
+        private DetailVideoLargeImageBean detailVideoLargeImage;
+        private int direct_play;
+        private int group_flags;
+        private int show_pgc_subscribe;
+        private String video_id;
+        private int video_preloading_flag;
+        private int video_type;
+        @SerializedName("video_watch_count")
+        private int videoWatchCount;
+        private int video_watching_count;
+
+        @Bindable
+        public DetailVideoLargeImageBean getDetailVideoLargeImage() {
+            return detailVideoLargeImage;
+        }
+
+        public void setDetailVideoLargeImage(DetailVideoLargeImageBean detailVideoLargeImage) {
+            this.detailVideoLargeImage = detailVideoLargeImage;
+        }
+
+        public int getDirect_play() {
+            return direct_play;
+        }
+
+        public void setDirect_play(int direct_play) {
+            this.direct_play = direct_play;
+        }
+
+        public int getGroup_flags() {
+            return group_flags;
+        }
+
+        public void setGroup_flags(int group_flags) {
+            this.group_flags = group_flags;
+        }
+
+        public int getShow_pgc_subscribe() {
+            return show_pgc_subscribe;
+        }
+
+        public void setShow_pgc_subscribe(int show_pgc_subscribe) {
+            this.show_pgc_subscribe = show_pgc_subscribe;
+        }
+
+        public String getVideo_id() {
+            return video_id;
+        }
+
+        public void setVideo_id(String video_id) {
+            this.video_id = video_id;
+        }
+
+        public int getVideo_preloading_flag() {
+            return video_preloading_flag;
+        }
+
+        public void setVideo_preloading_flag(int video_preloading_flag) {
+            this.video_preloading_flag = video_preloading_flag;
+        }
+
+        public int getVideo_type() {
+            return video_type;
+        }
+
+        public void setVideo_type(int video_type) {
+            this.video_type = video_type;
+        }
+
+        public int getVideoWatchCount() {
+            return videoWatchCount;
+        }
+
+        public void setVideoWatchCount(int videoWatchCount) {
+            this.videoWatchCount = videoWatchCount;
+        }
+
+        public int getVideo_watching_count() {
+            return video_watching_count;
+        }
+
+        public void setVideo_watching_count(int video_watching_count) {
+            this.video_watching_count = video_watching_count;
+        }
+
+        public static class DetailVideoLargeImageBean extends BaseObservable {
+            /**
+             * height : 326
+             * uri : video1609/4c3d0011ce0957150d2e
+             * url : http: //p3.pstatp.com/video1609/4c3d0011ce0957150d2e
+             * url_list : [{"url":"http: //p3.pstatp.com/video1609/4c3d0011ce0957150d2e"},{"url":"http: //pb9.pstatp.com/video1609/4c3d0011ce0957150d2e"},{"url":"http: //pb1.pstatp.com/video1609/4c3d0011ce0957150d2e"}]
+             * width : 580
+             */
+
+            private int height;
+            private String uri;
+            private String url;
+            private int width;
+            private List<UrlListBean> url_list;
+
+            public int getHeight() {
+                return height;
+            }
+
+            public void setHeight(int height) {
+                this.height = height;
+            }
+
+            public String getUri() {
+                return uri;
+            }
+
+            public void setUri(String uri) {
+                this.uri = uri;
+            }
+
+            @Bindable
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public int getWidth() {
+                return width;
+            }
+
+            public void setWidth(int width) {
+                this.width = width;
+            }
+
+            public List<UrlListBean> getUrl_list() {
+                return url_list;
+            }
+
+            public void setUrl_list(List<UrlListBean> url_list) {
+                this.url_list = url_list;
+            }
+
+            public static class UrlListBean {
+                /**
+                 * url : http: //p3.pstatp.com/video1609/4c3d0011ce0957150d2e
+                 */
+
+                private String url;
+
+                public String getUrl() {
+                    return url;
+                }
+
+                public void setUrl(String url) {
+                    this.url = url;
+                }
+            }
         }
     }
 

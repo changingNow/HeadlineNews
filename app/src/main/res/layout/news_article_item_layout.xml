@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/news_item_border_margin"
+        android:layout_marginBottom="@dimen/news_item_margin"
         android:orientation="vertical">
 
         <LinearLayout
@@ -23,8 +24,8 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/news_item_image_size"
+                android:layout_height="@dimen/news_item_image_size"
                 bind:setImageByUrl="@{dataBean.userInfo.avatarUrl}" />
 
             <TextView
@@ -61,5 +62,67 @@
             </RelativeLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/news_item_border_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{dataBean.title}"
+                android:textSize="@dimen/news_item_big_title"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="@{dataBean.hasVideo ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/news_item_border_margin"
+                    android:layout_weight="1"
+                    android:text="@{dataBean.description}"
+                    android:textSize="@dimen/news_item_description_text_size"
+                    android:textStyle="normal" />
+
+                <ImageView
+                    android:layout_width="@dimen/news_article_image_size"
+                    android:layout_height="@dimen/news_article_image_size"
+                    android:scaleType="fitXY"
+                    android:visibility="@{dataBean.imageList.size() == 0 ? View.GONE : View.VISIBLE}"
+                    bind:setImageByUrl="@{dataBean.imageList.get(0).url}" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{dataBean.hasVideo ? View.VISIBLE : View.GONE}">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    bind:setImageByUrl="@{dataBean.videoDetailInfo.detailVideoLargeImage.url}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/news_item_border_margin"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    bind:formatTimeToTextView="@{dataBean.videoDuration}" />
+            </RelativeLayout>
+
+        </LinearLayout>
     </LinearLayout>
 </layout>

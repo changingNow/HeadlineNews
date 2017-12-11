@@ -1,6 +1,7 @@
 package com.lw.headlinenews.utils;
 
 import android.databinding.BindingAdapter;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;

@@ -1,8 +1,8 @@
 package com.lw.headlinenews.adapter;
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.lw.headlinenews.BR;
 import com.lw.headlinenews.R;
 import com.lw.headlinenews.bean.NewsArticleDataBean;
-import com.lw.headlinenews.databinding.NewsArticleItemLayoutBinding;
 import com.lw.headlinenews.viewHolder.BaseDataBindingViewHolder;
 
 import java.util.List;

@@ -45,7 +45,6 @@ public class NewsArticleListFragment extends BaseListFragment<NewsContact.View, 
     @Override
     public void onLoadData(List<NewsArticleDataBean> list) {
         if (!CollectionUtils.isNullOrEmpty(list)) {
-            LogUtils.d(TAG, "============" + list.get(0).getDescription());
             NewsArticleAdapter adapter = new NewsArticleAdapter(list);
             recycleView.setAdapter(adapter);
         }

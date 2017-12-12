@@ -2,9 +2,12 @@ package com.lw.headlinenews.bean;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.databinding.Observable;
 
 import com.google.gson.annotations.SerializedName;
+import com.lw.headlinenews.event.NewsItemClickEvent;
+import com.lw.headlinenews.event.NewsItemShareClickEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -13,6 +16,14 @@ import java.util.List;
  */
 
 public class NewsArticleDataBean extends BaseObservable {
+
+    public void setOnItemClickListener(NewsArticleDataBean dataBean) {
+        EventBus.getDefault().post(new NewsItemClickEvent(dataBean));
+    }
+
+    public void setOnItemShareClickListener(NewsArticleDataBean dataBean) {
+        EventBus.getDefault().post(new NewsItemShareClickEvent(dataBean));
+    }
 
     /**
      * abstract : 侯勇是一个不善言谈的人，他心地善良，乐于助人，他周围的邻居都很喜欢他。也是因为他的善良，加上他不善言谈，他总是常常被人误会，但他对这些误会总是不愿做过多的解释。用他自己的话说就是理解你的人你不需要向他们解释，那些不理解你的人你解释了也没用。
@@ -49,24 +60,24 @@ public class NewsArticleDataBean extends BaseObservable {
      * {"url":"http://p1.pstatp.com/list/300x196/47260004665c59efb7ab.webp"},
      * {"url":"http://pb3.pstatp.com/list/300x196/47260004665c59efb7ab.webp"},
      * {"url":"http://pb9.pstatp.com/list/300x196/47260004665c59efb7ab.webp"}],
-     *
+     * <p>
      * "width":1280},
-     *
+     * <p>
      * {"height":720,"uri":"list/472a0002cb8d714df989",
      * "url":"http://p3.pstatp.com/list/300x196/472a0002cb8d714df989.webp",
      * "url_list":[{"url":"http://p3.pstatp.com/list/300x196/472a0002cb8d714df989.webp"},
      * {"url":"http://pb9.pstatp.com/list/300x196/472a0002cb8d714df989.webp"},
      * {"url":"http://pb1.pstatp.com/list/300x196/472a0002cb8d714df989.webp"}],
-     *
+     * <p>
      * "width":1280},
-     *
+     * <p>
      * {"height":720,"uri":"list/47260004679cd59c8671",
      * "url":"http://p3.pstatp.com/list/300x196/47260004679cd59c8671.webp",
-         * "url_list":[{"url":"http://p3.pstatp.com/list/300x196/47260004679cd59c8671.webp"},
+     * "url_list":[{"url":"http://p3.pstatp.com/list/300x196/47260004679cd59c8671.webp"},
      * {"url":"http://pb9.pstatp.com/list/300x196/47260004679cd59c8671.webp"},
      * {"url":"http://pb1.pstatp.com/list/300x196/47260004679cd59c8671.webp"}],"width":1280}]
-     *
-     *
+     * <p>
+     * <p>
      * is_subject : false
      * item_id : 6494789423077523982
      * item_version : 0

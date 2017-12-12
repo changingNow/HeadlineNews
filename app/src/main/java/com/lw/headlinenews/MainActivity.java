@@ -1,21 +1,26 @@
 package com.lw.headlinenews;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
 
 import com.lw.headlinenews.base.BaseActivity;
+import com.lw.headlinenews.event.NewsItemClickEvent;
+import com.lw.headlinenews.event.NewsItemShareClickEvent;
 import com.lw.headlinenews.module.news.NewsTabLayout;
 import com.lw.headlinenews.module.photo.PhotoTabLayout;
 import com.lw.headlinenews.module.video.VideoTabLayout;
+
+import org.greenrobot.eventbus.Subscribe;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, RadioGroup.OnCheckedChangeListener {
 
@@ -47,7 +52,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //            switchFragment(position);
 //            bottomMenu.check(id);
 //        } else {
-            fragmentManager.beginTransaction().add(R.id.content_container, new NewsTabLayout()).commit();
+        fragmentManager.beginTransaction().add(R.id.content_container, new NewsTabLayout()).commit();
 //        }
     }
 
@@ -110,5 +115,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         super.onSaveInstanceState(outState);
         outState.putInt(POSITION, position);
         outState.putInt(CURRENT_ID, bottomMenu.getCheckedRadioButtonId());
+    }
+
+    @Subscribe
+    public void onNewsItemClickEvent(NewsItemClickEvent event) {
+        Log.d("tag", "========onItemClickEvent======"+event.getDataBean().getUrl());
+        Uri uri = Uri.parse(event.getDataBean().getUrl());
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+        startActivity(intent);
+    }
+
+    @Subscribe
+    public void onNewsItemShareClickEvent(NewsItemShareClickEvent event) {
+        Log.d("tag", "========onItemShareClickEvent======"+event.getBean().getShareUrl());
     }
 }

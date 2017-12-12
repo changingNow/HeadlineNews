@@ -63,6 +63,7 @@ public class NewsArticlePresenter extends NewsContact.Presenter<NewsContact.View
                     }
                 })
                 .toList()
+                .compose(getView().<List<NewsArticleDataBean>>bindToLife())
                 .subscribe(new Consumer<List<NewsArticleDataBean>>() {
                     @Override
                     public void accept(List<NewsArticleDataBean> newsArticleDataBeans) throws Exception {

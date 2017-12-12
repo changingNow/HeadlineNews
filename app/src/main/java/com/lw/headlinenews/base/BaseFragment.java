@@ -7,13 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lw.headlinenews.event.DoNoThingEvent;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.trello.rxlifecycle2.components.support.RxFragment;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by lw on 17-11-16.
@@ -32,6 +28,7 @@ public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter
 
     /**
      * init presenter
+     *
      * @return presenter
      */
     protected abstract P createPresenter();
@@ -62,7 +59,6 @@ public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(attachLayoutId(), container, false);
-        EventBus.getDefault().register(this);
         setPresenter();
         initView(view);
         initData();
@@ -76,7 +72,7 @@ public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter
         if (presenter == null) {
             throw new NullPointerException("presenter must be set before!");
         }
-        presenter.onAttach((V)this);
+        presenter.onAttach((V) this);
     }
 
     /**
@@ -93,10 +89,6 @@ public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter
         if (presenter != null) {
             presenter.onDetach();
         }
-        EventBus.getDefault().unregister(this);
     }
 
-    @Subscribe
-    public void registEventBusOnly(DoNoThingEvent event) {
-    }
 }

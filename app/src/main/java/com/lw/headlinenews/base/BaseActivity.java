@@ -22,13 +22,18 @@ public class BaseActivity extends RxAppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         EventBus.getDefault().register(this);
     }
 
     /**
      * 初始化 Toolbar
      */
-
 
 
     protected void initToolBar(Toolbar toolbar, boolean homeAsUpEnabled, String title) {
@@ -53,5 +58,6 @@ public class BaseActivity extends RxAppCompatActivity {
     }
 
     @Subscribe
-    public void registEventBusOnly(DoNoThingEvent event) {}
+    public void registEventBusOnly(DoNoThingEvent event) {
+    }
 }

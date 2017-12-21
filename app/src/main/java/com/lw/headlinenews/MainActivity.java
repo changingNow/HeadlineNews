@@ -1,5 +1,6 @@
 package com.lw.headlinenews;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,11 +15,15 @@ import android.view.MenuItem;
 import android.widget.RadioGroup;
 
 import com.lw.headlinenews.base.BaseActivity;
+import com.lw.headlinenews.bean.NewsArticleParcelableBean;
 import com.lw.headlinenews.event.NewsItemClickEvent;
 import com.lw.headlinenews.event.NewsItemShareClickEvent;
 import com.lw.headlinenews.module.news.NewsTabLayout;
+import com.lw.headlinenews.module.news.article.NewsDetailWebActivity;
 import com.lw.headlinenews.module.photo.PhotoTabLayout;
 import com.lw.headlinenews.module.video.VideoTabLayout;
+import com.lw.headlinenews.utils.AppConstant;
+import com.lw.headlinenews.utils.BeanFormate;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -119,10 +124,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Subscribe
     public void onNewsItemClickEvent(NewsItemClickEvent event) {
-        Log.d("tag", "========onItemClickEvent======"+event.getDataBean().getUrl());
-        Uri uri = Uri.parse(event.getDataBean().getUrl());
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-
+        Intent intent = new Intent();
+        NewsArticleParcelableBean parcelableBean = new NewsArticleParcelableBean();
+        BeanFormate.formateToParcelableArticleBean(event.getDataBean(), parcelableBean);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(AppConstant.NEWS_ARTICLE_PARCEABLE_BEAN_KEY, parcelableBean);
+        intent.putExtra(AppConstant.NEWS_INTENT_BUNDLE_KEY, bundle);
+        intent.setComponent(new ComponentName(this, NewsDetailWebActivity.class));
         startActivity(intent);
     }
 

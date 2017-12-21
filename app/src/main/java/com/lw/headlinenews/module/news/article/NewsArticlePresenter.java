@@ -24,7 +24,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by lw on 17-12-2.
  */
 
-public class NewsArticlePresenter extends NewsContact.Presenter<NewsContact.View> {
+public class NewsArticlePresenter extends NewsContact.Presenter {
 
     private Gson gson = new Gson();
 

@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 public class NewsContact {
-    abstract static class Presenter<V extends View> extends IBaseListPresenter<V> {
+    abstract static class Presenter extends IBaseListPresenter<View> {
         public abstract void getNewsArticleList(String category);
     }
 

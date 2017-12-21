@@ -3,7 +3,6 @@ package com.lw.commonUtils;
 import android.content.Context;
 import android.text.format.DateFormat;
 
-import com.lw.utils.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

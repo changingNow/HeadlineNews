@@ -9,4 +9,9 @@ public interface IBaseListView extends IBaseView {
      * 显示网络错误
      */
     void onShowNetError();
+
+    /**
+     *  loading finish
+     */
+    void onLoadingFinish();
 }

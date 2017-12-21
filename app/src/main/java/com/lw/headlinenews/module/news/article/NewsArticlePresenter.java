@@ -1,6 +1,8 @@
 package com.lw.headlinenews.module.news.article;
 
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.lw.commonUtils.RetrofitUtils;
 import com.lw.commonUtils.StringUtils;
@@ -27,9 +29,13 @@ import io.reactivex.schedulers.Schedulers;
 public class NewsArticlePresenter extends NewsContact.Presenter {
 
     private Gson gson = new Gson();
+    private String category = null;
 
     @Override
-    public void getNewsArticleList(String category) {
+    public void getNewsArticleList(String... categories) {
+        if (this.category == null) {
+            this.category = categories[0];
+        }
         String time = String.valueOf(System.currentTimeMillis() / 1000);
         RetrofitUtils.getInstance().getRetrofit(HNApplication.getAppContext(), NewsApi.HOST)
                 .create(NewsApi.class)
@@ -70,6 +76,7 @@ public class NewsArticlePresenter extends NewsContact.Presenter {
                         NewsContact.View view = getView();
                         if (view != null) {
                             view.onLoadData(newsArticleDataBeans);
+                            view.onLoadingFinish();
                         }
                     }
                 }, new Consumer<Throwable>() {
@@ -87,12 +94,12 @@ public class NewsArticlePresenter extends NewsContact.Presenter {
 
     @Override
     public void doRefresh() {
-        NewsContact.View view = getView();
-
+        getNewsArticleList();
     }
 
     @Override
     public void doLoadMore() {
-
+        Log.d("tag", "=====doLoadMore======presenter=====");
+        getNewsArticleList();
     }
 }

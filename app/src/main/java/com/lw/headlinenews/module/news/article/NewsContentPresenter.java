@@ -70,6 +70,11 @@ public class NewsContentPresenter extends NewsDetailContact.Presenter {
                     public void accept(String s) throws Exception {
                         getView().setWebViewContent(s, true);
                     }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        getView().setWebViewContent(null, false);
+                    }
                 });
     }
 

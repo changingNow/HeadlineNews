@@ -27,12 +27,13 @@ public class NewsContentFragment extends BaseFragment<NewsDetailContact.View, Ne
     private static String TAG = "NewsContentFragment";
     private WebView webView;
     private Toolbar toolBar;
+    private String shareUrl;
 
     public static NewsContentFragment getInstance(NewsArticleParcelableBean bean) {
         NewsContentFragment fragment = new NewsContentFragment();
         Bundle args = new Bundle();
         args.putParcelable(TAG, bean);
-        fragment.setArguments(args); //must set, for set listener onOptionsItemSelected.
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -50,7 +51,7 @@ public class NewsContentFragment extends BaseFragment<NewsDetailContact.View, Ne
     protected void initView(View view) {
         webView = view.findViewById(R.id.webView);
         toolBar = view.findViewById(R.id.toolbar);
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(true); //must set, for set listener onOptionsItemSelected.
         initToolBar(toolBar, true, getResources().getString(R.string.news));
     }
 
@@ -115,33 +116,36 @@ public class NewsContentFragment extends BaseFragment<NewsDetailContact.View, Ne
     protected void initData() throws NullPointerException {
         Bundle bundle = getArguments();
         NewsArticleParcelableBean parcelable = bundle.getParcelable(TAG);
+        shareUrl = parcelable.getShareUrl();
         initWebClient();
         presenter.doLoadData(parcelable.getDisplayUrl());
     }
 
     @Override
     public void onStop() {
-        super.onStop();
         clearWebView();
+        super.onStop();
     }
 
     private void clearWebView() {
-        webView.getSettings().setJavaScriptEnabled(false);
-        webView.clearHistory();
-        ((ViewGroup) webView.getParent()).removeView(webView);
-        webView.destroy();
-        webView = null;
+        if (webView != null) {
+            webView.getSettings().setJavaScriptEnabled(false);
+            webView.clearHistory();
+            ((ViewGroup) webView.getParent()).removeView(webView);
+            webView.destroy();
+            webView = null;
+        }
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d("tag", "=====onOptionsItemSelected==========");
         switch (item.getItemId()) {
             case android.R.id.home:
                 if (webView.canGoBack()) {
                     webView.goBack();
-                    return true;
+                } else {
+                    getActivity().onBackPressed();
                 }
                 break;
         }
@@ -154,7 +158,7 @@ public class NewsContentFragment extends BaseFragment<NewsDetailContact.View, Ne
         if (isText) {
             webView.loadDataWithBaseURL(null, url, "text/html", "utf-8", null);
         } else {
-//            webView.loadUrl();
+            webView.loadUrl(shareUrl);
         }
     }
 }

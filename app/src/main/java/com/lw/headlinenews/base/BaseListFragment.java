@@ -2,6 +2,7 @@ package com.lw.headlinenews.base;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -37,11 +38,19 @@ public abstract class BaseListFragment<V extends IBaseListView, P extends IBaseL
 
     @Override
     public void onRefresh() {
+        Log.d("tag", "==XRecyclerView==onRefresh======");
         presenter.doRefresh();
     }
 
     @Override
     public void onLoadMore() {
+        Log.d("tag", "==XRecyclerView==onLoadMore======");
         presenter.doLoadMore();
+    }
+
+    @Override
+    public void onLoadingFinish() {
+        recycleView.refreshComplete();
+        recycleView.loadMoreComplete();
     }
 }

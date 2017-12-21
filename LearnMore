@@ -1,2 +1,5 @@
-1. 资源图片如何使用他使用的xml文件,不直接使用图片放进来
-2.
+1. 资源图片如何使用他使用的xml文件,不直接使用图片放进来?
+  ---使用方右键单击drawable, 选择new--Vector Asset, 选择svg 图片. 优点是减小app的体积. 不用设置多套图片, 能自适应.
+
+2. String urlBase = response.raw().request().url().toString(); retrofit这么做是为什么, 做什么用的?
+ ---

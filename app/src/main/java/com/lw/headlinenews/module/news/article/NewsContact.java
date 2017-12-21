@@ -12,7 +12,7 @@ import java.util.List;
 
 public class NewsContact {
     abstract static class Presenter extends IBaseListPresenter<View> {
-        public abstract void getNewsArticleList(String category);
+        public abstract void getNewsArticleList(String... category);
     }
 
     interface View extends IBaseListView {

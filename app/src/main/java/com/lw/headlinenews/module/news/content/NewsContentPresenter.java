@@ -1,4 +1,4 @@
-package com.lw.headlinenews.module.news.article;
+package com.lw.headlinenews.module.news.content;
 
 
 import com.lw.commonUtils.RetrofitUtils;
@@ -22,7 +22,7 @@ import retrofit2.Response;
  * Created by lw on 17-12-20.
  */
 
-public class NewsContentPresenter extends NewsDetailContact.Presenter {
+public class NewsContentPresenter extends NewsContentContact.Presenter {
     @Override
     void doLoadData(final String displayUrl) {
         Observable

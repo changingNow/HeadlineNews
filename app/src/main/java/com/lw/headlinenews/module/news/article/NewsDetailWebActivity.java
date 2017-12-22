@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import com.lw.headlinenews.R;
 import com.lw.headlinenews.base.BaseActivity;
 import com.lw.headlinenews.bean.NewsArticleParcelableBean;
+import com.lw.headlinenews.module.news.content.NewsContentFragment;
 import com.lw.headlinenews.utils.AppConstant;
 
 public class NewsDetailWebActivity extends BaseActivity {

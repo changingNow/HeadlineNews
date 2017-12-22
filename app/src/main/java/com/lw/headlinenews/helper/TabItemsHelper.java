@@ -28,6 +28,10 @@ public class TabItemsHelper {
         return newsTabItems;
     }
 
+    public static List<NewsTabItems> getDisableItems() {
+        return SQLite.select().from(NewsTabItems.class).where(NewsTabItems_Table.isEnable.eq(DISABLE)).queryList();
+    }
+
     private static void firstNewsItemInsert() {
         Context context = HNApplication.getAppContext();
         String[] newsName = context.getResources().getStringArray(R.array.mobile_news_name);

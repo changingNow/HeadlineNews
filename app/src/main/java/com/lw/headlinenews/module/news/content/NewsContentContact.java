@@ -1,4 +1,4 @@
-package com.lw.headlinenews.module.news.article;
+package com.lw.headlinenews.module.news.content;
 
 import com.lw.headlinenews.base.IBasePresenter;
 import com.lw.headlinenews.base.IBaseView;
@@ -7,7 +7,7 @@ import com.lw.headlinenews.base.IBaseView;
  * Created by lw on 17-12-20.
  */
 
-public class NewsDetailContact {
+public class NewsContentContact {
     interface View extends IBaseView {
         void setWebViewContent(String url, boolean isText);
     }

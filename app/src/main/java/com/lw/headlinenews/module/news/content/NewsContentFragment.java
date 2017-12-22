@@ -1,9 +1,8 @@
-package com.lw.headlinenews.module.news.article;
+package com.lw.headlinenews.module.news.content;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +21,7 @@ import com.lw.headlinenews.bean.NewsArticleParcelableBean;
  * Created by lw on 17-12-20.
  */
 
-public class NewsContentFragment extends BaseFragment<NewsDetailContact.View, NewsContentPresenter> implements NewsDetailContact.View {
+public class NewsContentFragment extends BaseFragment<NewsContentContact.View, NewsContentPresenter> implements NewsContentContact.View {
 
     private static String TAG = "NewsContentFragment";
     private WebView webView;

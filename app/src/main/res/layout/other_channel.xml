@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/channel_item_margin"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/other_channel_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/channel_text_view_height"
+            android:gravity="center" />
+    </LinearLayout>
+</layout>

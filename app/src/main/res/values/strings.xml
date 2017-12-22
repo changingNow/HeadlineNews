@@ -14,4 +14,10 @@
     <string name="exit">退出</string>
     <string name="net_error">网络不给力</string>
     <string name="news">新闻</string>
+    <string name="add_channel">添加频道</string>
+    <string name="my_channel">我的频道</string>
+    <string name="my_channel_des">长按编辑,拖拽排序</string>
+    <string name="ok">确认</string>
+    <string name="hide_channel">影藏频道</string>
+    <string name="channel_edit">编辑</string>
 </resources>

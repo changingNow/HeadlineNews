@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/channel_header_height"
+        android:layout_marginLeft="@dimen/channel_margin"
+        android:layout_marginRight="@dimen/channel_margin"
+        android:layout_marginTop="@dimen/channel_item_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hide_channel"
+            android:textSize="@dimen/news_item_big_title" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_height="2dp"
+            android:background="@android:color/black" />
+    </LinearLayout>
+</layout>

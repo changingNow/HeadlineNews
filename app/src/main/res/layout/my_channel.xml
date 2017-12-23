@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <import type="com.lw.headlinenews.dbmodel.NewsTabItems"/>
+        <import type="android.view.View"/>
+        <variable
+            name="channelItem"
+            type="NewsTabItems"/>
+    </data>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/channel_item_margin"
@@ -11,11 +18,12 @@
             android:id="@+id/channel_item_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/channel_text_view_height"
+            android:textColor="@android:color/black"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:text="afafaf" />
+            android:text="@{channelItem.tabItemName}" />
 
         <ImageView
             android:id="@+id/channel_item_iv"
@@ -24,6 +32,7 @@
             android:layout_alignRight="@+id/channel_item_title"
             android:layout_alignTop="@+id/channel_item_title"
             android:src="@drawable/ic_cancel"
+            android:visibility="@{channelItem.isEditing ? View.VISIBLE : View.GONE}"
             tools:ignore="RtlHardcoded" />
     </RelativeLayout>
 </layout>

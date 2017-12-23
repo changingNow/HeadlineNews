@@ -1,10 +1,13 @@
 package com.lw.headlinenews.module.news.channel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
+import com.lw.commonUtils.ToastUtils;
 import com.lw.headlinenews.R;
 import com.lw.headlinenews.adapter.NewsChannelAdapter;
 import com.lw.headlinenews.base.BaseActivity;
@@ -19,6 +22,7 @@ public class AddChannelActivity extends BaseActivity {
     private RecyclerView channelView;
     private List<NewsTabItems> myChannels;
     private List<NewsTabItems> otherChannels;
+    private NewsChannelAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class AddChannelActivity extends BaseActivity {
         channelView = (RecyclerView) findViewById(R.id.channel_content_recycler_view);
         GridLayoutManager manager = new GridLayoutManager(getApplicationContext(), AppConstant.CHANNEL_COLUMNS);
         channelView.setLayoutManager(manager);
-        final NewsChannelAdapter adapter = new NewsChannelAdapter(myChannels, otherChannels);
+        adapter = new NewsChannelAdapter(myChannels, otherChannels);
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
@@ -51,5 +55,22 @@ public class AddChannelActivity extends BaseActivity {
         channelView.setAdapter(adapter);
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (adapter != null ) {
+                    if (adapter.canExit()) {
+                        adapter.saveChannelInfo();
+                        setResult(RESULT_OK);
+                        onBackPressed();
+                    } else {
+                        ToastUtils.showToast(this, R.string.make_confirm);
+                        return false;
+                    }
+                }
+                break;
+        }
+        return true;
+    }
 }

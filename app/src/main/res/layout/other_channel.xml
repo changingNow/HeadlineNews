@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <import type="com.lw.headlinenews.dbmodel.NewsTabItems"/>
+        <variable
+            name="otherChannelItem"
+            type="NewsTabItems"/>
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -11,6 +17,8 @@
             android:id="@+id/other_channel_item_title"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/channel_text_view_height"
+            android:text="@{otherChannelItem.tabItemName}"
+            android:textColor="@android:color/black"
             android:gravity="center" />
     </LinearLayout>
 </layout>

@@ -20,4 +20,5 @@
     <string name="ok">确认</string>
     <string name="hide_channel">影藏频道</string>
     <string name="channel_edit">编辑</string>
+    <string name="make_confirm">请确认。</string>
 </resources>

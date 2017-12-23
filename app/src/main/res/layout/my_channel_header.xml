@@ -19,6 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:gravity="center"
+                android:textColor="@android:color/black"
                 android:text="@string/my_channel"
                 android:textSize="@dimen/news_item_big_title" />
 
@@ -31,6 +32,7 @@
                 android:layout_toEndOf="@+id/my_channel_title"
                 android:layout_toRightOf="@+id/my_channel_title"
                 android:gravity="center"
+                android:textColor="@android:color/black"
                 android:text="@string/my_channel_des"
                 android:textSize="@dimen/news_item_little_title" />
 

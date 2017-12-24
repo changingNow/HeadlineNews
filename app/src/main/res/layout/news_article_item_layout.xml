@@ -35,12 +35,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/news_item_border_margin"
                 android:text="@{dataBean.source}"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/news_item_little_title"
                 android:visibility="@{dataBean.source != null ? View.VISIBLE : View.GONE}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:text='@{"-" + dataBean.commentCount + "评论-"}'
                 android:textSize="@dimen/news_item_little_title" />
 
@@ -48,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/news_item_little_title"
+                android:textColor="@android:color/black"
                 bind:setIntToTextView="@{dataBean.behotTime}" />
 
             <RelativeLayout
@@ -60,6 +63,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:textColor="@android:color/black"
                     android:onClick="@{()->dataBean.setOnItemShareClickListener(dataBean)}"
                     android:text="test" />
             </RelativeLayout>
@@ -75,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{dataBean.title}"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/news_item_big_title"
                 android:textStyle="bold" />
 
@@ -90,6 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/news_item_border_margin"
                     android:layout_weight="1"
+                    android:textColor="@android:color/black"
                     android:text="@{dataBean.description}"
                     android:textSize="@dimen/news_item_description_text_size"
                     android:textStyle="normal" />
@@ -120,6 +126,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_margin="@dimen/news_item_border_margin"
+                    android:textColor="@android:color/black"
                     android:background="@android:color/white"
                     android:gravity="center"
                     android:textStyle="bold"

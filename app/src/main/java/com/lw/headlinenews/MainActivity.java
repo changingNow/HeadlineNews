@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 
 import com.lw.headlinenews.base.BaseActivity;
 import com.lw.headlinenews.bean.NewsArticleParcelableBean;
+import com.lw.headlinenews.event.NewsChannelSavedEvent;
 import com.lw.headlinenews.event.NewsItemClickEvent;
 import com.lw.headlinenews.event.NewsItemShareClickEvent;
 import com.lw.headlinenews.module.news.NewsTabLayout;
@@ -137,5 +138,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Subscribe
     public void onNewsItemShareClickEvent(NewsItemShareClickEvent event) {
         Log.d("tag", "========onItemShareClickEvent======"+event.getBean().getShareUrl());
+    }
+
+    @Subscribe
+    public void OnNewsChannelSavedEvent(NewsChannelSavedEvent event) {
+        Log.d("tag", "===OnNewsChannelSaved============");
+//        initTabs();
     }
 }

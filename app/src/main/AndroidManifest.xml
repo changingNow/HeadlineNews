@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".module.news.channel.AddChannelActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +26,8 @@
         <activity android:name=".CppDemoActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".module.news.article.NewsDetailWebActivity" />
-        <!--<activity android:name=".module.news.channel.AddChannelActivity"></activity>-->
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".module.news.channel.AddChannelActivity"></activity>
+        <!--<activity android:name=".MainActivity"></activity>-->
     </application>
 
 </manifest>

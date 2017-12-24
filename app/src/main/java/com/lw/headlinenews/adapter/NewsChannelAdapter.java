@@ -27,8 +27,8 @@ public class NewsChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private final String TAG = "NewsChannelAdapter";
 
-    private final List<NewsTabItems> myChannels;
-    private final List<NewsTabItems> otherChannels;
+    private List<NewsTabItems> myChannels;
+    private List<NewsTabItems> otherChannels;
     private final int COUNT_ONLY_MY_CHANNEL_HEADER = 1;
     private final int COUNT_BOTH_CHANNEL_HEADER = COUNT_ONLY_MY_CHANNEL_HEADER + 1;
 
@@ -144,10 +144,8 @@ public class NewsChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         binding.setOtherChannelItem(otherChannelItem);
         binding.executePendingBindings();
         holder.itemView.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                Log.d("tag", "====OtherChannelBinding====" + otherChannelItem.getTabItemName() + " /other po " + otherChannelPosition + "//or:" + position);
                 if (!isEditMode) {
                     otherChannels.remove(otherChannelPosition);
                     otherChannelItem.setEditing(false);
@@ -184,17 +182,13 @@ public class NewsChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return !isEditMode;
     }
 
-    public void saveChannelInfo() {
-        for (NewsTabItems item : myChannels) {
-            item.setIsEnable(1);
-            item.update();
-        }
-        for (NewsTabItems item : otherChannels) {
-            item.setIsEnable(0);
-            item.update();
-        }
+    public List<NewsTabItems> getMyChannels() {
+        return myChannels;
     }
 
+    public List<NewsTabItems> getOtherChannels() {
+        return otherChannels;
+    }
 
     class MyChannelHeaderHolder extends BaseDataBindingViewHolder<MyChannelHeaderBinding> {
         public MyChannelHeaderHolder(MyChannelHeaderBinding view) {
@@ -219,6 +213,5 @@ public class NewsChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             super(view);
         }
     }
-
 
 }

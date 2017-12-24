@@ -41,7 +41,6 @@ public class NewsArticlePresenter extends NewsContact.Presenter {
                 .create(NewsApi.class)
                 .getNews(category, time)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .switchMap(new Function<NewsArticleBean, Observable<NewsArticleDataBean>>() {
                     @Override
                     public Observable<NewsArticleDataBean> apply(NewsArticleBean newsArticleBean) throws Exception {
@@ -70,6 +69,7 @@ public class NewsArticlePresenter extends NewsContact.Presenter {
                 })
                 .toList()
                 .compose(getView().<List<NewsArticleDataBean>>bindToLife())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<NewsArticleDataBean>>() {
                     @Override
                     public void accept(List<NewsArticleDataBean> newsArticleDataBeans) throws Exception {

@@ -20,7 +20,10 @@ public class TabItemsHelper {
     private static final int DISABLE = 0;
     private static final int DEFAULT_ENABLE_NUM = 8;
     public static List<NewsTabItems> getNewsTabItems() {
-        List<NewsTabItems> newsTabItems = SQLite.select().from(NewsTabItems.class).where(NewsTabItems_Table.isEnable.eq(ENABLE)).queryList();
+        List<NewsTabItems> newsTabItems = SQLite.select().from(NewsTabItems.class)
+                .where(NewsTabItems_Table.isEnable.eq(ENABLE))
+                .orderBy(NewsTabItems_Table.updatedAt, true)
+                .queryList();
         if (newsTabItems == null || newsTabItems.size() <= 0) {
             firstNewsItemInsert();
             return SQLite.select().from(NewsTabItems.class).where(NewsTabItems_Table.isEnable.eq(ENABLE)).queryList();

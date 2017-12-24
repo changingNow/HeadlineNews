@@ -36,4 +36,9 @@ public class BasePageAdapter extends FragmentStatePagerAdapter {
     }
 
 
+    public void recreateTabs(List<Fragment> fragmentList, List<String> titleList) {
+        this.fragmentList = fragmentList;
+        this.titleList = titleList;
+        notifyDataSetChanged();
+    }
 }

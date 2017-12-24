@@ -16,12 +16,18 @@ import android.widget.ImageButton;
 import com.lw.headlinenews.R;
 import com.lw.headlinenews.adapter.BasePageAdapter;
 import com.lw.headlinenews.dbmodel.NewsTabItems;
+import com.lw.headlinenews.event.NewsChannelSavedEvent;
 import com.lw.headlinenews.helper.TabItemsHelper;
 import com.lw.headlinenews.module.news.article.NewsArticleListFragment;
 import com.lw.headlinenews.module.news.channel.AddChannelActivity;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -29,6 +35,7 @@ import java.util.List;
  */
 
 public class NewsTabLayout extends Fragment implements View.OnClickListener {
+
     private static final String TAG = "NewsTabLayout";
 
     private TabLayout newsTab;
@@ -36,6 +43,8 @@ public class NewsTabLayout extends Fragment implements View.OnClickListener {
     private List<String> titleList;
     private List<Fragment> fragmentList;
     private ImageButton newsAddChannel;
+    private BasePageAdapter adapter;
+    private Map<String, Fragment> map = new HashMap<>();
 
     @Nullable
     @Override
@@ -52,8 +61,10 @@ public class NewsTabLayout extends Fragment implements View.OnClickListener {
         newsTab.setupWithViewPager(newsViewPager);
         newsTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         initTabs();
-        newsViewPager.setAdapter(new BasePageAdapter(getFragmentManager(), fragmentList, titleList));
+        adapter = new BasePageAdapter(getFragmentManager(), fragmentList, titleList);
+        newsViewPager.setAdapter(adapter);
         newsAddChannel.setOnClickListener(this);
+        EventBus.getDefault().register(this);
     }
 
     private void initTabs() {
@@ -66,20 +77,16 @@ public class NewsTabLayout extends Fragment implements View.OnClickListener {
             if (tabItemId.equals("question_and_answer") || tabItemId.equals("video") || tabItemId.equals("essay_joke")) {
                 continue;
             }
-//            switch (tabItemId){
-//                case "question_and_answer":
-//                    break;
-//                case "video":
-//                    break;
-//                case "essay_joke":
-//                    break;
-//                default:
-                    fragment = NewsArticleListFragment.getInstance(item.tabItemId);
-                    titleList.add(item.tabItemName);
-                    Log.d(TAG, "============"+item.tabItemName+"/"+item.tabItemId);
-//                    break;
-//            }
+            if (map.containsKey(tabItemId)) {
+                fragment = map.get(tabItemId);
+            } else {
+                fragment = NewsArticleListFragment.getInstance(item.tabItemId);
+            }
             fragmentList.add(fragment);
+            titleList.add(item.tabItemName);
+            if (fragment != null) {
+                map.put(tabItemId, fragment);
+            }
         }
     }
 
@@ -88,5 +95,26 @@ public class NewsTabLayout extends Fragment implements View.OnClickListener {
         Intent intent = new Intent();
         intent.setComponent(new ComponentName(getActivity(), AddChannelActivity.class));
         startActivity(intent);
+    }
+
+    @Subscribe
+    public void OnNewsChannelSaved(NewsChannelSavedEvent event) {
+        if (adapter != null && event.successful) {
+            titleList.clear();
+            fragmentList.clear();
+            initTabs();
+            adapter.recreateTabs(fragmentList, titleList);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

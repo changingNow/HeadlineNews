@@ -2,64 +2,72 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:id="@+id/drawer_layout"
     tools:openDrawer="start">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include layout="@layout/toolbar" />
 
         <include layout="@layout/container" />
 
-        <RadioGroup
-            android:id="@+id/bottom_menus"
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            app:layout_scrollFlags="scroll|enterAlways">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <RadioButton
-                style="@style/radio_button_style"
-                android:id="@+id/menu_news"
-                android:drawableTop="@drawable/ic_news"
-                android:text="@string/title_news" />
+            <RadioGroup
+                android:id="@+id/bottom_menus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                app:layout_scrollFlags="scroll|enterAlways">
 
-            <RadioButton
-                style="@style/radio_button_style"
-                android:id="@+id/menu_pic"
-                android:drawableTop="@drawable/ic_pic"
-                android:text="@string/title_pic" />
+                <RadioButton
+                    android:id="@+id/menu_news"
+                    style="@style/radio_button_style"
+                    android:drawableTop="@drawable/ic_news"
+                    android:text="@string/title_news" />
 
-            <RadioButton
-                style="@style/radio_button_style"
-                android:id="@+id/menu_video"
-                android:drawableTop="@drawable/ic_video"
-                android:text="@string/title_video" />
+                <RadioButton
+                    android:id="@+id/menu_pic"
+                    style="@style/radio_button_style"
+                    android:drawableTop="@drawable/ic_pic"
+                    android:text="@string/title_pic" />
 
-            <RadioButton
-                style="@style/radio_button_style"
-                android:id="@+id/menu_media"
-                android:drawableTop="@drawable/ic_media"
-                android:text="@string/title_media" />
+                <RadioButton
+                    android:id="@+id/menu_video"
+                    style="@style/radio_button_style"
+                    android:drawableTop="@drawable/ic_video"
+                    android:text="@string/title_video" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/menu_media"
+                    style="@style/radio_button_style"
+                    android:drawableTop="@drawable/ic_media"
+                    android:text="@string/title_media" />
+
+            </RadioGroup>
+        </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/nav_main"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="left|start"
         android:fitsSystemWindows="true"
-        android:id="@+id/nav_main"
         app:headerLayout="@layout/nav_header_layout"
         app:menu="@menu/navigation_menu" />
 

@@ -61,8 +61,9 @@ public class NewsTabLayout extends Fragment implements View.OnClickListener {
         newsTab.setupWithViewPager(newsViewPager);
         newsTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         initTabs();
-        adapter = new BasePageAdapter(getFragmentManager(), fragmentList, titleList);
+        adapter = new BasePageAdapter(getChildFragmentManager(), fragmentList, titleList);
         newsViewPager.setAdapter(adapter);
+        newsViewPager.setOffscreenPageLimit(3);
         newsAddChannel.setOnClickListener(this);
         EventBus.getDefault().register(this);
     }

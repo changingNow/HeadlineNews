@@ -3,6 +3,7 @@ package com.lw.headlinenews.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 
 import java.util.List;
 
@@ -35,6 +36,10 @@ public class BasePageAdapter extends FragmentStatePagerAdapter {
         return titleList.get(position);
     }
 
+    @Override
+    public int getItemPosition(Object object) {
+        return PagerAdapter.POSITION_NONE;
+    }
 
     public void recreateTabs(List<Fragment> fragmentList, List<String> titleList) {
         this.fragmentList = fragmentList;

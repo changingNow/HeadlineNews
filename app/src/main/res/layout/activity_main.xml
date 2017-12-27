@@ -17,49 +17,42 @@
 
         <include layout="@layout/container" />
 
-        <android.support.v4.widget.NestedScrollView
+        <RadioGroup
+            android:id="@+id/bottom_menus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_scrollFlags="scroll|enterAlways">
 
-            <RadioGroup
-                android:id="@+id/bottom_menus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                app:layout_scrollFlags="scroll|enterAlways">
+            <RadioButton
+                android:id="@+id/menu_news"
+                style="@style/radio_button_style"
+                android:drawableTop="@drawable/ic_news"
+                android:text="@string/title_news" />
 
-                <RadioButton
-                    android:id="@+id/menu_news"
-                    style="@style/radio_button_style"
-                    android:drawableTop="@drawable/ic_news"
-                    android:text="@string/title_news" />
+            <RadioButton
+                android:id="@+id/menu_pic"
+                style="@style/radio_button_style"
+                android:drawableTop="@drawable/ic_pic"
+                android:text="@string/title_pic" />
 
-                <RadioButton
-                    android:id="@+id/menu_pic"
-                    style="@style/radio_button_style"
-                    android:drawableTop="@drawable/ic_pic"
-                    android:text="@string/title_pic" />
+            <RadioButton
+                android:id="@+id/menu_video"
+                style="@style/radio_button_style"
+                android:drawableTop="@drawable/ic_video"
+                android:text="@string/title_video" />
 
-                <RadioButton
-                    android:id="@+id/menu_video"
-                    style="@style/radio_button_style"
-                    android:drawableTop="@drawable/ic_video"
-                    android:text="@string/title_video" />
+            <RadioButton
+                android:id="@+id/menu_media"
+                style="@style/radio_button_style"
+                android:drawableTop="@drawable/ic_media"
+                android:text="@string/title_media" />
 
-                <RadioButton
-                    android:id="@+id/menu_media"
-                    style="@style/radio_button_style"
-                    android:drawableTop="@drawable/ic_media"
-                    android:text="@string/title_media" />
-
-            </RadioGroup>
-        </android.support.v4.widget.NestedScrollView>
+        </RadioGroup>
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView

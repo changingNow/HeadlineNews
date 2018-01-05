@@ -17,6 +17,11 @@ public class NewsDetailWebActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail_web);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initData();
     }
 

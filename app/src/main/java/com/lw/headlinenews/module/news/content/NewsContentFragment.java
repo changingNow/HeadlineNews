@@ -95,6 +95,7 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
         webView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                hideLoadingProgress();
                 if ((keyEvent.getKeyCode() == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
                     webView.goBack();
                     return true;
@@ -129,6 +130,7 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
     @Override
     public void onStop() {
         clearWebView();
+        hideLoadingProgress();
         super.onStop();
     }
 
@@ -171,7 +173,7 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
     public void showLoadingProgress() {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(getContext());
-            progressDialog.setMessage("loading...");
+            progressDialog.setMessage(getString(R.string.loading));
         }
         if (!progressDialog.isShowing()) {
             progressDialog.show();
@@ -180,6 +182,8 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
 
     @Override
     public void hideLoadingProgress() {
-        progressDialog.hide();
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 }

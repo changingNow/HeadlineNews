@@ -3,9 +3,7 @@ package com.lw.headlinenews.module.news.content;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,7 +58,7 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
 
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebClient() {
-        WebSettings settings = webView.getSettings();
+        final WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         // 缩放,设置为不能缩放可以防止页面上出现放大和缩小的图标
         settings.setBuiltInZoomControls(false);
@@ -73,7 +71,9 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
         // 开启application Cache功能
         settings.setAppCacheEnabled(true);
         // 判断是否为无图模式
-        settings.setBlockNetworkImage(false);
+        settings.setBlockNetworkImage(true);//暂时设为无图模式
+        settings.setLoadsImagesAutomatically(false);
+
         // 不调用第三方浏览器即可进行页面反应
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -86,6 +86,8 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
 
             @Override
             public void onPageFinished(WebView view, String url) {
+                settings.setBlockNetworkImage(false);
+                settings.setLoadsImagesAutomatically(true);
                 super.onPageFinished(view, url);
             }
         });
@@ -171,7 +173,7 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
             progressDialog = new ProgressDialog(getContext());
             progressDialog.setMessage("loading...");
         }
-        if (!progressDialog.isShowing()){
+        if (!progressDialog.isShowing()) {
             progressDialog.show();
         }
     }

@@ -59,6 +59,7 @@ public class NewsContentPresenter extends NewsContentContact.Presenter {
                         return RetrofitUtils.getInstance().getRetrofit(HNApplication.getAppContext(), NewsApi.HOST).create(NewsApi.class).getContentBean(s);
                     }
                 })
+                .observeOn(Schedulers.newThread())
                 .map(new Function<NewsContentBean, String>() {
                     @Override
                     public String apply(NewsContentBean bean) throws Exception {

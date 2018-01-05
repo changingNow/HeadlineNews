@@ -25,6 +25,7 @@ import retrofit2.Response;
 public class NewsContentPresenter extends NewsContentContact.Presenter {
     @Override
     void doLoadData(final String displayUrl) {
+        getView().showLoadingProgress();
         Observable
                 .create(new ObservableOnSubscribe<String>() {
                     @Override
@@ -69,11 +70,13 @@ public class NewsContentPresenter extends NewsContentContact.Presenter {
                     @Override
                     public void accept(String s) throws Exception {
                         getView().setWebViewContent(s, true);
+                        getView().hideLoadingProgress();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         getView().setWebViewContent(null, false);
+                        getView().hideLoadingProgress();
                     }
                 });
     }

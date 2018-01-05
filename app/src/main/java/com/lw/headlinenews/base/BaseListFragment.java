@@ -27,6 +27,7 @@ public abstract class BaseListFragment<V extends IBaseListView, P extends IBaseL
     protected void initView(View view) {
         BaseListFragmentBinding bind = DataBindingUtil.bind(view);
         recycleView = bind.contentRecycleView;
+        recycleView.getDefaultRefreshHeaderView().setRefreshTimeVisible(true);
         recycleView.setLoadingListener(this);
         recycleView.setLayoutManager(new LinearLayoutManager(getContext().getApplicationContext()));
     }

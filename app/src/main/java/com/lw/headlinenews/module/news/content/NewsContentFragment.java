@@ -1,8 +1,11 @@
 package com.lw.headlinenews.module.news.content;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +30,7 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
     private WebView webView;
     private Toolbar toolBar;
     private String shareUrl;
+    private ProgressDialog progressDialog;
 
     public static NewsContentFragment getInstance(NewsArticleParcelableBean bean) {
         NewsContentFragment fragment = new NewsContentFragment();
@@ -159,5 +163,21 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
         } else {
             webView.loadUrl(shareUrl);
         }
+    }
+
+    @Override
+    public void showLoadingProgress() {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(getContext());
+            progressDialog.setMessage("loading...");
+        }
+        if (!progressDialog.isShowing()){
+            progressDialog.show();
+        }
+    }
+
+    @Override
+    public void hideLoadingProgress() {
+        progressDialog.hide();
     }
 }

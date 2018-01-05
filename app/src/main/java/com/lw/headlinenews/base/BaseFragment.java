@@ -3,6 +3,7 @@ package com.lw.headlinenews.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,10 +60,15 @@ public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(attachLayoutId(), container, false);
-        setPresenter();
         initView(view);
-        initData();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setPresenter();
+        initData();
     }
 
     private void setPresenter() {
@@ -85,10 +91,10 @@ public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter
 
     @Override
     public void onStop() {
-        super.onStop();
         if (presenter != null) {
             presenter.onDetach();
         }
+        super.onStop();
     }
 
 }

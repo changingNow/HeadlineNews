@@ -1,5 +1,6 @@
 package com.lw.headlinenews.base;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,7 @@ import com.trello.rxlifecycle2.components.support.RxFragment;
 public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter<V>> extends RxFragment implements IBaseView {
 
     protected P presenter;
+    private ProgressDialog progressDialog;
 
     /**
      * 绑定布局文件
@@ -94,7 +96,24 @@ public abstract class BaseFragment<V extends IBaseView, P extends IBasePresenter
         if (presenter != null) {
             presenter.onDetach();
         }
+        hideLoadingProgress();
         super.onStop();
+    }
+
+    public void showLoadingProgress(String message) {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(getContext());
+            progressDialog.setMessage(message);
+        }
+        if (!progressDialog.isShowing()) {
+            progressDialog.show();
+        }
+    }
+
+    public void hideLoadingProgress() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 
 }

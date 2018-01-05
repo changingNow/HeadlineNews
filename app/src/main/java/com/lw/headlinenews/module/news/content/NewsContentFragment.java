@@ -28,7 +28,6 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
     private WebView webView;
     private Toolbar toolBar;
     private String shareUrl;
-    private ProgressDialog progressDialog;
 
     public static NewsContentFragment getInstance(NewsArticleParcelableBean bean) {
         NewsContentFragment fragment = new NewsContentFragment();
@@ -125,12 +124,12 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
         shareUrl = parcelable.getShareUrl();
         initWebClient();
         presenter.doLoadData(parcelable.getDisplayUrl());
+        showLoadingProgress(getString(R.string.loading));
     }
 
     @Override
     public void onStop() {
         clearWebView();
-        hideLoadingProgress();
         super.onStop();
     }
 
@@ -162,6 +161,7 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
 
     @Override
     public void setWebViewContent(String url, boolean isText) {
+        hideLoadingProgress();
         if (isText) {
             webView.loadDataWithBaseURL(null, url, "text/html", "utf-8", null);
         } else {
@@ -169,21 +169,4 @@ public class NewsContentFragment extends BaseFragment<NewsContentContact.View, N
         }
     }
 
-    @Override
-    public void showLoadingProgress() {
-        if (progressDialog == null) {
-            progressDialog = new ProgressDialog(getContext());
-            progressDialog.setMessage(getString(R.string.loading));
-        }
-        if (!progressDialog.isShowing()) {
-            progressDialog.show();
-        }
-    }
-
-    @Override
-    public void hideLoadingProgress() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
-    }
 }

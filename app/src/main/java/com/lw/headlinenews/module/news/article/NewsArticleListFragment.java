@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.lw.commonUtils.CollectionUtils;
 import com.lw.commonUtils.LogUtils;
+import com.lw.headlinenews.R;
 import com.lw.headlinenews.adapter.NewsArticleAdapter;
 import com.lw.headlinenews.base.BaseListFragment;
 import com.lw.headlinenews.bean.NewsArticleDataBean;
@@ -35,6 +36,7 @@ public class NewsArticleListFragment extends BaseListFragment<NewsContact.View, 
     protected void initData() throws NullPointerException {
         String category = getArguments().getString(BUNDLE_KEY);
         presenter.getNewsArticleList(category);
+        showLoadingProgress(getString(R.string.loading));
     }
 
     @Override
@@ -48,8 +50,17 @@ public class NewsArticleListFragment extends BaseListFragment<NewsContact.View, 
             NewsArticleAdapter adapter = new NewsArticleAdapter(list);
             recycleView.setAdapter(adapter);
         }
-
     }
 
+    @Override
+    public void onShowNetError() {
+        super.onShowNetError();
+        hideLoadingProgress();
+    }
 
+    @Override
+    public void onLoadingFinish() {
+        super.onLoadingFinish();
+        hideLoadingProgress();
+    }
 }

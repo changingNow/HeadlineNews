@@ -10,10 +10,6 @@ import com.lw.headlinenews.base.IBaseView;
 public class NewsContentContact {
     interface View extends IBaseView {
         void setWebViewContent(String url, boolean isText);
-
-        void showLoadingProgress();
-
-        void hideLoadingProgress();
     }
 
     abstract static class Presenter extends IBasePresenter<View> {

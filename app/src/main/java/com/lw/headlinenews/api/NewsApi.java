@@ -2,6 +2,7 @@ package com.lw.headlinenews.api;
 
 import com.lw.headlinenews.bean.NewsArticleBean;
 import com.lw.headlinenews.bean.NewsContentBean;
+import com.lw.headlinenews.bean.VideoContentBean;
 import com.lw.headlinenews.utils.AppConstant;
 
 import io.reactivex.Observable;
@@ -38,4 +39,13 @@ public interface NewsApi {
      */
     @GET
     Observable<NewsContentBean> getContentBean(@Url String url);
+
+
+    // http://ib.365yg.com/video/urls/v/1/toutiao/mp4/6604ebf8ac1748dfb1a88b762a1d5f3c?r=2006931968253233&s=1797729064
+    /**
+     * 获取新闻列表中含有视频的内容 具体方法见 NewsVideoContentPresenter 解密和拼凑方法
+     *
+     */
+    @GET
+    Observable<VideoContentBean> getVideoNewsContentBean(@Url String url);
 }

@@ -2,6 +2,8 @@ package com.lw.headlinenews.bean;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 import com.lw.headlinenews.event.NewsItemClickEvent;
@@ -1142,7 +1144,7 @@ public class NewsArticleDataBean extends BaseObservable {
     }
 
 
-    public static class VideoDetailInfoBean extends BaseObservable {
+    public static class VideoDetailInfoBean extends BaseObservable implements Parcelable {
         /**
          * detail_video_large_image : {"height":326,"uri":"video1609/4c3d0011ce0957150d2e","url":"http: //p3.pstatp.com/video1609/4c3d0011ce0957150d2e","url_list":[{"url":"http: //p3.pstatp.com/video1609/4c3d0011ce0957150d2e"},{"url":"http: //pb9.pstatp.com/video1609/4c3d0011ce0957150d2e"},{"url":"http: //pb1.pstatp.com/video1609/4c3d0011ce0957150d2e"}],"width":580}
          * direct_play : 1
@@ -1165,6 +1167,29 @@ public class NewsArticleDataBean extends BaseObservable {
         @SerializedName("video_watch_count")
         private int videoWatchCount;
         private int video_watching_count;
+
+        protected VideoDetailInfoBean(Parcel in) {
+            direct_play = in.readInt();
+            group_flags = in.readInt();
+            show_pgc_subscribe = in.readInt();
+            video_id = in.readString();
+            video_preloading_flag = in.readInt();
+            video_type = in.readInt();
+            videoWatchCount = in.readInt();
+            video_watching_count = in.readInt();
+        }
+
+        public static final Creator<VideoDetailInfoBean> CREATOR = new Creator<VideoDetailInfoBean>() {
+            @Override
+            public VideoDetailInfoBean createFromParcel(Parcel in) {
+                return new VideoDetailInfoBean(in);
+            }
+
+            @Override
+            public VideoDetailInfoBean[] newArray(int size) {
+                return new VideoDetailInfoBean[size];
+            }
+        };
 
         @Bindable
         public DetailVideoLargeImageBean getDetailVideoLargeImage() {
@@ -1237,6 +1262,23 @@ public class NewsArticleDataBean extends BaseObservable {
 
         public void setVideo_watching_count(int video_watching_count) {
             this.video_watching_count = video_watching_count;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeInt(direct_play);
+            parcel.writeInt(group_flags);
+            parcel.writeInt(show_pgc_subscribe);
+            parcel.writeString(video_id);
+            parcel.writeInt(video_preloading_flag);
+            parcel.writeInt(video_type);
+            parcel.writeInt(videoWatchCount);
+            parcel.writeInt(video_watching_count);
         }
 
         public static class DetailVideoLargeImageBean extends BaseObservable {

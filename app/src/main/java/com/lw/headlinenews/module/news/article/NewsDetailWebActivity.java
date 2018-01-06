@@ -8,6 +8,7 @@ import com.lw.headlinenews.R;
 import com.lw.headlinenews.base.BaseActivity;
 import com.lw.headlinenews.bean.NewsArticleParcelableBean;
 import com.lw.headlinenews.module.news.content.NewsContentFragment;
+import com.lw.headlinenews.module.news.content.NewsVideoContentFragment;
 import com.lw.headlinenews.utils.AppConstant;
 
 public class NewsDetailWebActivity extends BaseActivity {
@@ -29,8 +30,10 @@ public class NewsDetailWebActivity extends BaseActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra(AppConstant.NEWS_INTENT_BUNDLE_KEY);
         NewsArticleParcelableBean parcelable = bundle.getParcelable(AppConstant.NEWS_ARTICLE_PARCEABLE_BEAN_KEY);
+        NewsContentFragment newsContentFragment = NewsContentFragment.getInstance(parcelable);
+        NewsVideoContentFragment videoContentFragment = NewsVideoContentFragment.getInstance(parcelable);
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.content_container, NewsContentFragment.getInstance(parcelable))
+                .add(R.id.content_container, parcelable.isHasVideo() ? videoContentFragment : newsContentFragment)
                 .commit();
     }
 

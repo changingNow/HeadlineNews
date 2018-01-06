@@ -15,6 +15,8 @@ public class NewsArticleParcelableBean implements Parcelable {
     private long mediaId;
     private long groupId;
     private long itemId;
+    private boolean hasVideo;
+    private NewsArticleDataBean.VideoDetailInfoBean videoInfo;
 
     public NewsArticleParcelableBean() {
     }
@@ -27,6 +29,8 @@ public class NewsArticleParcelableBean implements Parcelable {
         mediaId = in.readLong();
         groupId = in.readLong();
         itemId = in.readLong();
+        hasVideo = in.readByte() != 0;
+        videoInfo = in.readParcelable(NewsArticleDataBean.VideoDetailInfoBean.class.getClassLoader());
     }
 
     public static final Creator<NewsArticleParcelableBean> CREATOR = new Creator<NewsArticleParcelableBean>() {
@@ -55,6 +59,8 @@ public class NewsArticleParcelableBean implements Parcelable {
         parcel.writeLong(mediaId);
         parcel.writeLong(groupId);
         parcel.writeLong(itemId);
+        parcel.writeByte((byte) (hasVideo ? 1 : 0));
+        parcel.writeParcelable(videoInfo, i);
     }
 
 
@@ -112,5 +118,21 @@ public class NewsArticleParcelableBean implements Parcelable {
 
     public void setDisplayUrl(String displayUrl) {
         this.displayUrl = displayUrl;
+    }
+
+    public NewsArticleDataBean.VideoDetailInfoBean getVideoInfo() {
+        return videoInfo;
+    }
+
+    public void setVideoInfo(NewsArticleDataBean.VideoDetailInfoBean videoInfo) {
+        this.videoInfo = videoInfo;
+    }
+
+    public boolean isHasVideo() {
+        return hasVideo;
+    }
+
+    public void setHasVideo(boolean hasVideo) {
+        this.hasVideo = hasVideo;
     }
 }

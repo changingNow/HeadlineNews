@@ -16,5 +16,7 @@ public class BeanFormate {
         parcelableBean.setShareUrl(dataBean.getShareUrl());
         parcelableBean.setDisplayUrl(dataBean.getDisplayUrl());
         parcelableBean.setMediaName(dataBean.getMediaName());
+        parcelableBean.setVideoInfo(dataBean.getVideoDetailInfo());
+        parcelableBean.setHasVideo(dataBean.isHasVideo());
     }
 }

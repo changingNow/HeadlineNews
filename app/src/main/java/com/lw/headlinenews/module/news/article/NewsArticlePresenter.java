@@ -10,6 +10,7 @@ import com.lw.headlinenews.HNApplication;
 import com.lw.headlinenews.api.NewsApi;
 import com.lw.headlinenews.bean.NewsArticleBean;
 import com.lw.headlinenews.bean.NewsArticleDataBean;
+import com.lw.headlinenews.bean.VideoContentBean;
 
 import java.util.ArrayList;
 import java.util.List;
